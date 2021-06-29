@@ -1,5 +1,6 @@
 import React from 'react';
 import { mount, shallow } from 'enzyme';
+import { create } from 'react-test-renderer';
 import Footer from '../../components/Footer';
 
 describe('<Footer />', () => {
@@ -12,4 +13,11 @@ describe('<Footer />', () => {
     expect(footer.find('.Footer-title').text()).toEqual('Platzi Store');
   });
 
+});
+
+describe('Footer snapshot', () => {
+  test('Verify Footer UI', () => {
+    const footer = create(<Footer />);
+    expect(footer.toJSON()).toMatchSnapshot();
+  });
 });
